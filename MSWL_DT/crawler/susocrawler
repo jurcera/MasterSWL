@@ -5,16 +5,18 @@ US ) AppleWebKit /534.7 ( KHTML , like Gecko ) Chrome
 /7.0.517.41 Safari /534.7 "
 
 _opener = urllib2.build_opener()
-_opener.addheaders = [( ’User-agent’, user_agent )]
+_opener.addheaders = [(’User-agent’, user_agent )]
 raw_code = _opener.open(article.url).read()
 
 from BeautifulSoup import BeautifulSoup as Soup
+
 soup_code = Soup(raw_code)
 links = [link[’ href ’] for link
                         in soup_code.findAll(’a’)
                         if link.has_key(’href’)]
 
 import argparse
+
 parser = argparse.ArgumentParser( description = " Let’s
 susocrawler the Internet " )
 parser.add_argument ( ’ url ’ , nargs =1 ,
